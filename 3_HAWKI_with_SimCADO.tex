@@ -4,6 +4,7 @@
 Aside from testing during the coding phase, we tested the accuracy of SimCADO by comparing simulated raw detector readout images to raw observations from HAWK-I on UT4 at the VLT. HAWK-I, the High Acuity Wide-field K-band Imager \citep{hawki}, is a present-day analogue to MICADO's imaging modes and thus a good test-bed for these comparisons. In order to create a version of SimCADO that simulates raw observations for the VLT/HAWK-I optical train, we created a simulation configuration file that reflects the UT4/HAWK-I optical train from the publicly available instrument data on the ESO website\footnote{\url{http://www.eso.org/sci/facilities/paranal/instruments/HAWK-I.html}} and from HAWK-I calibration data from the ESO archive. The verification process included two tests on the simulated output data. The first tested whether the HAWK-I version of SimCADO could reproduce the sensitivity limits of the VLT/HAWK-I system as given in \citet{hawki}. The second involved simulating images of two globular clusters and comparing them against the real images from the ESO archive. The raw images used for the comparison were several J and Ks images of the globular clusters M\,4 and NGC\,4147, downloaded from the ESO archive.
 
 \subsection{Modelling HAWK-I with SimCADO}
+\label{subsec:HAWKI_modelling}
 
 To create a model of the HAWK-I optical train, SimCADO required the following data:
 \begin{itemize}
@@ -30,6 +31,7 @@ The flat field effect of the whole system was neglected for these tests. The arc
 
 
 \subsection{Test 1 - HAWK-I Sensitivity with SimCADO}
+\label{subsec:HAWKI_sensitivites}
 
 \begin{table}
     \centering
@@ -68,7 +70,7 @@ It can be seen from Table~\ref{tab:HAWKI_lim_mags} that the limiting magnitudes 
 \begin{figure}
 
     \centering
-    \includegraphics[width=0.48\textwidth]{images/HAWKI_SNR_Rainbow_J}
+    \includegraphics[width=0.48\textwidth]{images/HAWKI_rainbow_J}
     
     \caption{Limiting Vega magnitudes as predicted by SimCADO for the UT4/HAWK-I optical system. A grid of hundred stars were observed for different durations between 1 and 60 minutes using SimCADO configured to model UT4/HAWK-I. The $5\sigma$ contour in this graph is $\sim 0.5$\m lower than the theoretical $5\sigma$ detection limits as returned by the ESO HAWK-I ETC. However the one hour $5\sigma$ Vega magnitude limit ($J=23.7$\m) is within 0.2\m  of the limit published by \citet{hawki}.}
     \label{fig:HAWKI_rainbow_j}
@@ -114,7 +116,7 @@ To test how well SimCADO reproduces the spatial aspects of an observation, we do
 \begin{figure*}
 
     \centering
-    \includegraphics[width=\textwidth]{images/HAWKI_vs_HAWKado_couts_and_mags.png}
+    \includegraphics[width=\textwidth]{images/HAWKI_vs_HAWKado_counts}
     
     \caption{Flux counts from aperture photometry of the stars in the simulated and real Ks-band images of M\,4. Each detector is plotted separately here as they cover different regions of M\,4 and have different gain factors. The strength of the symbols is determined by the photometric quality flag in the 2MASS catalogue. The dashed lines are the $\pm 0.3^\mathrm{m}$, or 30\,\% flux difference intervals. For detectors~1 and~2  more than 75\,\% of stars with A-grade 2MASS photometry fall within these bands. For detectors~3 and~4 this is $>85\,\%$. Approximately 55\,\% of the sources with C-grade or worse 2MASS photometry flags fell outside the $\pm 30\,\%$ bands. When investigating these sources we found a large fraction to be single entries in the 2MASS catalogue, were resolved into multiple stars in the HAWK-I images. Photon statistics only play a role for aperture fluxes on the order of $10^{4}$ counts.}
     \label{fig:HAWKI_hawkado_flux_comparison}
@@ -124,7 +126,7 @@ To test how well SimCADO reproduces the spatial aspects of an observation, we do
 \begin{figure*}
 
     \centering
-    \includegraphics[width=\textwidth]{images/hawki_simcado_side_by_side}
+    \includegraphics[width=\textwidth]{images/HAWKI_vs_HAWKado_images_quarter}
     
     \caption{Top: A comparison of a raw HAWK-I image (left) with a simulated image (right) from SimCADO for the same field near M\,4. The 2MASS point source catalogue was used to populate the simulated images. As such no sources fainter than the 2MASS detection limit were included. Features created by the optical train (e.g.~diffraction spikes) and by the detector (e.g.~saturation) can be seen in both the real and simulated images. The apparent size of the PSF for the brightest stars in the simulated images is smaller than in the real images because SimCADO does not currently model leakage from saturated pixels into neighbouring pixels. Bottom: The distribution of pixel counts for the real (left) and simulated (right) images is given here to illustrate that SimCADO is capable of recreating observations with no ``real world'' input. The discrepancy in the shape of the histogram for pixel counts less that 10\,000 is due to the low resolution custom made linearity curve used by SimCADO. Because of this the saturated pixels in the brightest stars are not perfectly modelled in SimCADO. However, as such pixels are often flagged as unusable by reduction pipelines, refining the accuracy of the linearity curve for SimCADO was deemed less than critical.}
     \label{fig:img_comparison}
@@ -142,6 +144,7 @@ Aside from reproducing the expected stellar fluxes on the detector plane, and mo
 
 
 \subsection{Differences between the simulated and the real HAWK-I images}
+\label{subsec:HAWKI_differences}
 
 Overall the simulated images of M\,4 and NGC\,4147 compared favourably with the raw observations from the ESO archive. The distribution of pixel flux, background level and noise, total star fluxes and positions, detector noise and saturation, were well reproduced in the simulated images. Magnitudes derived from aperture photometry on the simulated images matched almost perfectly with the 2MASS catalogue for all stars with $J, K_S > 11$\m. When comparing photometry between the simulated and archive images, around two thirds of all the stars measured had flux differences between the images within $\pm 0.3$\m. The scatter seen in Fig.~\ref{fig:HAWKI_hawkado_flux_comparison} is a combination of unresolved sources in the 2MASS catalogue being resolved by HAWK-I, and SimCADO not including the hot pixels on the HAWK-I detectors. Hence this scatter shows that there is a need for a better description of the globular clusters. An extrapolation of the source catalogue down to the detection limit of HAWK-I would be desirable. However, as the coordinates of the fainter sources are unknown, this would likely cause the scatter to increase rather than decrease. With the ELT's ability to detect sources down to $J\approx 29$\m, the prevalence of background sources in this regime will indeed need to be addressed and simulated accurately.
 

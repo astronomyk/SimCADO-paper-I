@@ -8,11 +8,12 @@ The PSFs for these simulations were produced by the SCAO working group for the M
 
 
 \subsection{Point source sensitivity vs. exposure time}
+\label{subsec:MICADO_sensitivities}
 
 \begin{figure*}
 
     \centering
-    \includegraphics[width=\textwidth]{images/MICADO_SNR_Rainbow_JHKBrG_vega}
+    \includegraphics[width=\textwidth]{images/MICADO_SNR_Rainbow_JHKBrG_ab}
 
     \caption{Limiting magnitude plots for the wide field (4\,mas/pixel) imaging mode of MICADO at the ELT in Vega magnitudes. Signal-to-noise ratios above $5\sigma$ are sufficient for photometry. High precision astrometry requires stronger detections $\sim 250\sigma$. It should be noted that these magnitudes apply to the current design of MICADO and the ELT. At the time of publication MICADO is still in its design phase. As such we expect small changes in these values as the MICADO design matures.}
     
@@ -89,6 +90,7 @@ Fig.~\ref{fig:point_source_sensitivities} shows SimCADOs estimate of the full ra
 % \footnote{To convert to the AB system $\sim 0.9$, $\sim 1.4$ and $\sim 1.85$ should be added to the J, H and Ks magnitudes respectively.}
 
 \subsection{Point source saturation limits}
+\label{subsec:MICADO_saturation_limits}
 
 \begin{table}
 
@@ -141,7 +143,7 @@ It is worth noting that in the standard wide-field imaging mode with an integrat
 
 
 \subsection{Spectral type with distance}
-
+\label{subsec:spec_type_vs_dist}
 
 Four of the major science drivers for MICADO rely on determining the properties of stellar populations. Hence we found it prudent to use the sensitivity estimates from SimCADO to calculate limiting distances for a $5\sigma$ detection for different spectral types. Fig.~\ref{fig:MS_distances} shows the apparent magnitude of a selection of main-sequence stars with increasing distance as well as the sensitivity limits for MICADO for a range of exposure times. 
 We used the main sequence absolute magnitudes given in Table~5 of \citet{pecaut2013}.\footnote{Additional information for the L and T dwarves not reported by Pecaut and Mamajek (2013) were taken from the associated website \url{http://www.pas.rochester.edu/~emamajek/EEM_dwarf_UBVIJHK_colors_Teff.txt}} As the brightest stars in the main sequence cover almost the same magnitude range as all giant and most supergiant stars, those readers interested in the limiting distances for stars that have left the main sequence are requested to use the distances for a main sequence star with an equivalent absolute magnitude. 
@@ -152,7 +154,7 @@ Using SimCADO we determined that MICADO should be able to detect all A-type star
 \begin{figure*}
 
     \centering
-    \includegraphics[width=\textwidth]{images/spec_type_vs_dist_paper2_J}
+    \includegraphics[width=\textwidth]{images/spec_type_vs_dist_J}
 
     \caption{The coloured lines represent the apparent magnitude of the major spectral types with increasing distance. The dashed horizontal lines, unless otherwise stated, represent the $5\sigma$ detection limits for various exposure times with MICADO. The intersection of a coloured line with a horizontal dotted line indicates that this type of main-sequence star will no longer be detectable by MICADO at the distance of the position of the intersection on the horizontal axis. As a reference, the dashed vertical lines show distances to well known astronomical objects. 
     % It is worth noting that what HAWK-I require 1\,hour to detect, will be detectable by MICADO in a minimum DIT (2.6\,seconds). While this comparison may seem ludicrous, the ELT has a primary mirror $\sim 20\times$ larger that of UT4 at the VLT and the smaller plate scale of MICADO means a factor of $\sim 35\times$ less background flux per pixel.
@@ -164,10 +166,11 @@ Using SimCADO we determined that MICADO should be able to detect all A-type star
 
 
 \subsection{Accuracy of the SimCADO sensitivity predictions}
+\label{subsec:MICADO_accuracy}
 
 \begin{figure*}
     \centering
-    \includegraphics[width=\textwidth]{images/Virgo_old_stellar_pop_HST_JWST_ELT_H_band.png}
+    \includegraphics[width=\textwidth]{images/Virgo_old_stellar_pop_HST_JWST_ELT_H_band}
     
     \caption{An illustration of the improvement in resolution that MICADO will provide for observations of densely populated regions compared to HST and JWST. The three rows of 1"x1" images show the low (top, $\mu_H=25.2^m$), medium (centre, $\mu_H=22.0^m$) and high (bottom, $\mu_H=19.6^m$) surface brightness regions of an elliptical galaxy at a distance of 18 Mpc - approximately the distance of the Virgo cluster. These simulated images were created using configuration files for SimCADO which mimic the optical systems of HST/WFC3, JWST/NIRCam and ELT/MICADO.  
     }

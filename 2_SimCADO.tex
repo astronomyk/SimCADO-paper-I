@@ -2,11 +2,13 @@
 \label{sec:scope}
 
 \subsection{Motivation and Scope}
+\label{subsec:motivation_scope}
 
 The scientific return of instruments like the ELT and MICADO is the primary reason for building such complex pieces of machinery. Knowing in advance what the capabilities of an instrument will be, and preferably knowing just how well the instrument will perform for different configurations is invaluable during the design phase. Furthermore, MICADO and the other ELT instruments (e.g.\ HARMONI, \citealt{harmoni}; METIS, \citealt{metis}; etc.) are being built by trans-national consortia, with many members from different institutes in different countries. As such the nodes in the consortia enjoy a certain level of geographic displacement. Each node in the consortia therefore often defaults to generating their own simulated data for the task to which they have been assigned. Additionally, the end users of the instrument also want to know how the instrument will behave and how useful it will be for their personal scientific projects well in advance so that they may prepare for when the instrument becomes available. All of these points can be considered true for almost all large instrument projects in modern day science -- hence why there has been a very concerted effort by the scientific community, and very notably by the astronomical community to develop full scope instrument data simulators for major projects (see e.g. HSIM for ELT/HARMONI, \citealt{hsim}; the ELT/METIS simulator, \citealt{metissim}; PhoSim for the LSST, \citealt{phosim}; TOAD for 4MOST, \citealt{toad}; WebbPSF for JWST, \citealt{poppy}; IRIS Data Simulator for TMT, \citealt{irissim}; etc.).
 
 
 \subsection{The SimCADO target users}
+\label{subsec:users}
 
 We have developed SimCADO for use primarily within the MICADO consortium, but also for interested external parties. SimCADO's main strength is that it gives all members of the consortium a common tool to generate simulated data for their assigned tasks. We see the following use cases for SimCADO:
 
@@ -25,10 +27,8 @@ We have developed SimCADO for use primarily within the MICADO consortium, but al
 \paragraph{The MAORY consortium:} MICADO will be the first and main beneficiary of the MAORY AO module \citep{maory}. Consequently the development of the MAORY module is inextricably linked to MICADO. Design choices made in the MAORY consortium will have a direct impact on the quality of the science that MICADO will be able to produce. By using SimCADO, members of the MAORY consortium will also be able to see directly how these design choices will affect MICADO observations.
   
 
-
-
 \subsection{SimCADO as an Instrument Data Simulator}
-\label{ssec:IDS}
+\label{subsec:IDS}
 
 First and foremost SimCADO was conceived as an instrument data simulator (IDS), not an end-to-end (E2E) simulator. An IDS differs from an E2E simulator in the following way: an E2E simulator models the interactions between each object and each element in the optical train with the incoming photons in a physically realistic manner, i.e.\ taking into account the physical interactions between photons and computer representations of physical objects along the optical train (see photon-tracing in PhoSim for the LSST: \citealt{phosim}). An IDS, on the other hand, turns the effects of each element in the optical train into mathematical operators, which are then applied to an input ``image'' (a 2D/3D representation of the sky). IDSs require much less computation power and are therefore much better suited for quick, personalised simulations and prototyping. However, this comes at the cost of flexibility. E2E simulations can create images for any physical configuration of the optical train, as long as a physical model of all components exist in memory. IDSs only generate output for a certain configuration if data (often originally created by an E2E simulation) already exists and can be converted into a series of mathematical operators. A good example is the case of the PSF. Given a point source with a certain brightness, the PSF will appear on the focal plane of an E2E simulation by only supplying a model of the physical objects along the light's path (spiders, mirrors, pupil stops, etc.). An E2E simulator needs only the values pertaining to the physical positions and dimensions of these objects. An IDS on the other hand is able to project a PSF onto the focal plane because a mathematical description (either a 2D image array or a 2D function) of that PSF has been supplied. The IDS then convolves this description with one or many point sources. Regardless of how the optical train changes, unless this mathematical description has been updated from another source (i.e.\ output from a separate E2E simulator) the IDS images will continue to display the same PSF.
 
